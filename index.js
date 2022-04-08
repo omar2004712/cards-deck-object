@@ -1,5 +1,6 @@
 const deck = {
     cards: [],
+    drawnCards: [],
     isShuffled: false,
     createDeck(){
         this.isShuffled = false;
@@ -22,8 +23,17 @@ const deck = {
         else{
             card = this.cards.pop();
         }
+        this.drawnCards.push(card);
         return card;
     },
+    drawMultipleCards(NOCards){
+        let cards = [];
+        for(let i = 0; i < NOCards; i++){
+            cards.push(this.drawCard())
+        }
+        return cards;
+    }
+    ,
     shuffle(){
         this.isShuffled = true;
         console.log("The deck has been shuffled.")
